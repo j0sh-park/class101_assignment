@@ -1,11 +1,10 @@
 import React from 'react'
 import { AppProps } from 'next/app'
 import { ApolloProvider } from '@apollo/client'
-import ApolloClient from '@components/common/ApolloClient'
+import ApolloClient from '@components/common/apollo-client'
 import { Provider as ReduxProvider } from 'react-redux'
 import reduxStore from '@modules/redux'
-import Fetch from '@components/common/Fetch'
-import { initI18next } from '@components/common/Globalization'
+import { initI18next } from '@components/common/globalization'
 import { useTranslation } from 'react-i18next'
 import Head from 'next/head'
 
@@ -21,7 +20,6 @@ const RootApp = ({ Component, pageProps }: AppProps) => {
       </Head>
       <ApolloProvider client={ApolloClient}>
         <ReduxProvider store={reduxStore}>
-          <Fetch />
           <Component {...pageProps} />
         </ReduxProvider>
       </ApolloProvider>

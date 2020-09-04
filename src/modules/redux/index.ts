@@ -1,9 +1,8 @@
 // @ts-ignore
 import { combineReducers, createStore } from '@reduxjs/toolkit'
-import auth from './auth'
-import user from './user'
+import shop from './shop'
 
-const rootReducer = combineReducers({ auth, user })
+const rootReducer = combineReducers({ shop })
 const rootStore = createStore(rootReducer)
 export default rootStore
 export type RootState = ReturnType<typeof rootReducer>
