@@ -1,4 +1,4 @@
-import { PRODUCTS_QUERY } from '@pages/products'
+import { gql } from '@apollo/client'
 
 const productItems = [
   {
@@ -115,6 +115,30 @@ const coupons = [
   },
 ]
 
+export const PRODUCTS_QUERY = gql`
+  query {
+    products {
+      id
+      title
+      coverImage
+      price
+      score
+      availableCoupon
+    }
+  }
+`
+
+export const COUPONS_QUERY = gql`
+  query {
+    coupons {
+      type
+      title
+      discountRate
+      discountAmount
+    }
+  }
+`
+
 export const mocks = [
   {
     request: {
@@ -123,6 +147,16 @@ export const mocks = [
     result: {
       data: {
         products: productItems,
+      },
+    },
+  },
+  {
+    request: {
+      query: COUPONS_QUERY,
+    },
+    result: {
+      data: {
+        coupons,
       },
     },
   },

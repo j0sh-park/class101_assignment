@@ -43,6 +43,7 @@ module.exports = {
     'no-param-reassign': 'off',
     'no-return-await': 'off',
     'react/jsx-wrap-multilines': 'off',
+    'react/jsx-indent': 'off',
   },
   settings: {
     'import/resolver': {

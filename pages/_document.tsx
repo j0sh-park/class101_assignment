@@ -4,6 +4,7 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
+  Head,
 } from 'next/document'
 
 export default class AppDocument extends Document {
@@ -15,6 +16,17 @@ export default class AppDocument extends Document {
   render() {
     return (
       <Html>
+        <Head>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          />
+          <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

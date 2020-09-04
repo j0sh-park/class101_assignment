@@ -8,7 +8,7 @@ interface Props {
 }
 export default ({ products }: Props) => {
   return (
-    <GridList cols={3}>
+    <GridList>
       {products.map((product) => {
         return <ProductItem key={product.id} product={product} />
       })}

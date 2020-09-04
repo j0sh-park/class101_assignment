@@ -1,24 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Container } from '@material-ui/core'
-import { gql, useQuery } from '@apollo/client'
 import Pagination from '@material-ui/lab/Pagination'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@modules/redux'
 import { shopActions } from '@modules/redux/shop'
 import ProductList from '@components/shop/ProductList'
+import useAxios from 'axios-hooks'
 import { Product } from '../src/models/shop'
-
-export const PRODUCTS_QUERY = gql`
-  query {
-    products {
-      id
-      title
-      coverImage
-      price
-      score
-    }
-  }
-`
 
 export default () => {
   const dispatch = useDispatch()
@@ -27,13 +15,13 @@ export default () => {
     (state) => state.shop.products
   )
   const [page, setPage] = useState(1)
-  const { data } = useQuery<{ products: Product[] }>(PRODUCTS_QUERY)
+  const [{ data }] = useAxios<Product[]>('/products.json')
 
   useEffect(() => {
-    if (data?.products?.length > 0) {
+    if (data?.length > 0) {
       dispatch(
         setProducts(
-          [...data.products].sort((a, b) => {
+          [...data].sort((a, b) => {
             return Math.max(Math.min(b.score - a.score, 1), -1)
           })
         )
@@ -50,15 +38,13 @@ export default () => {
 
   const startIndex = (page - 1) * 5
   const endIndex = startIndex + 5
+  let pageCount = Math.max(Math.floor((data?.length - 1) / 5) + 1, 1)
+  if (Number.isNaN(pageCount)) pageCount = 1
 
   return (
     <Container>
       <ProductList products={products.slice(startIndex, endIndex)} />
-      <Pagination
-        count={Math.floor((data?.products?.length - 1) / 5) + 1}
-        page={page}
-        onChange={handlePageChange}
-      />
+      <Pagination count={pageCount} page={page} onChange={handlePageChange} />
     </Container>
   )
 }
