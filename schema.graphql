@@ -1,13 +1,25 @@
-# This file was generated based on ".graphqlconfig". Do not edit manually.
-
 schema {
     query: Query
 }
 
 type Query {
-    getMe: User
+    products: [Product!]
+    coupons: [Coupon!]
+    test: Boolean
 }
 
-type User {
-    name: String!
+type Product {
+    id: String!
+    title: String!
+    coverImage: String!
+    price: Int!
+    score: Int!
+    availableCoupon: Boolean
+}
+
+type Coupon {
+    type: String!
+    title: String!
+    discountRate: Int
+    discountAmount: Int
 }
