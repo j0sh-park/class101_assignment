@@ -4,7 +4,6 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
-  Head,
 } from 'next/document'
 
 export default class AppDocument extends Document {
@@ -16,9 +15,6 @@ export default class AppDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <title />
-        </Head>
         <body>
           <Main />
           <NextScript />
