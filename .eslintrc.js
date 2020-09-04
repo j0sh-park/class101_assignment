@@ -56,6 +56,7 @@ module.exports = {
           ['@pages', './pages'],
           ['@components', './src/components'],
           ['@modules', './src/modules'],
+          ['@models', './src/models'],
           ['@utils', './src/utils'],
           ['@resources', './resources'],
         ],

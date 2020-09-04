@@ -7,13 +7,13 @@ export interface Product {
   availableCoupon?: boolean
 }
 
-export enum CouponTYpe {
+export enum CouponType {
   RATE = 'rate',
   AMOUNT = 'amount',
 }
 
 export interface Coupon {
-  type: CouponTYpe
+  type: CouponType
   title: string
   discountRate?: number
   discountAmount?: number
@@ -22,4 +22,5 @@ export interface Coupon {
 export interface CartItem {
   productId: string
   quantity: number
+  isSelected: boolean
 }

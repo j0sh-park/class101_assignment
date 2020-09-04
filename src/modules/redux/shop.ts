@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { CartItem, Coupon, Product } from '../../models/shop'
+import { CartItem, Coupon, Product } from '@models/shop'
 
 export interface ShopStore {
   products: Product[]
@@ -28,6 +28,7 @@ const shopSlick = createSlice({
         state.cartItems.push({
           productId: action.payload,
           quantity: 1,
+          isSelected: true,
         })
       }
     },
@@ -51,6 +52,22 @@ const shopSlick = createSlice({
       state.cartItems = state.cartItems.map((cartItem) => {
         if (cartItem.productId === action.payload) {
           cartItem.quantity = Math.max(1, cartItem.quantity - 1)
+        }
+        return cartItem
+      })
+    },
+    selectCartItem: (state, action: PayloadAction<string>) => {
+      state.cartItems = state.cartItems.map((cartItem) => {
+        if (cartItem.productId === action.payload) {
+          cartItem.isSelected = true
+        }
+        return cartItem
+      })
+    },
+    deselectCartItem: (state, action: PayloadAction<string>) => {
+      state.cartItems = state.cartItems.map((cartItem) => {
+        if (cartItem.productId === action.payload) {
+          cartItem.isSelected = false
         }
         return cartItem
       })

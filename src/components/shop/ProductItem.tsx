@@ -6,7 +6,7 @@ import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@modules/redux'
 import { shopActions } from '@modules/redux/shop'
-import { CartItem, Product } from '../../models/shop'
+import { CartItem, Product } from '@models/shop'
 
 interface Props {
   product: Product

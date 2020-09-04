@@ -3,7 +3,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
 import { RootState } from '@modules/redux'
-import { CartItem } from '../../models/shop'
+import { CartItem } from '@models/shop'
 
 export default () => {
   const cartItems = useSelector<RootState, CartItem[]>(
@@ -11,8 +11,12 @@ export default () => {
   )
   return (
     <Breadcrumbs aria-label="breadcrumb">
-      <Link href="/products">Products</Link>
-      <Link href="/cart">{`Cart(${cartItems.length})`}</Link>
+      <Link href="/products">
+        <a href="/products">Products</a>
+      </Link>
+      <Link href="/cart">
+        <a href="/cart">{`Cart(${cartItems.length})`}</a>
+      </Link>
     </Breadcrumbs>
   )
 }

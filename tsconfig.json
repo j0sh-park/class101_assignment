@@ -23,6 +23,9 @@
       "@modules/*": [
         "./src/modules/*"
       ],
+      "@models/*": [
+        "./src/models/*"
+      ],
       "@utils/*": [
         "./src/utils/*"
       ],
