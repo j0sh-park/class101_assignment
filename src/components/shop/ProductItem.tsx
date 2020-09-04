@@ -20,6 +20,15 @@ export default ({ product }: Props) => {
   )
   const isInCart =
     cartItems.filter((cartItem) => cartItem.productId === product.id).length > 0
+
+  const handleCartButton = () => {
+    if (isInCart) {
+      dispatch(removeCartItem(product.id))
+    } else {
+      dispatch(addCartItem(product.id))
+    }
+  }
+
   return (
     <GridListTile style={{ width: '100%', height: 400 }}>
       <img src={product.coverImage} alt={product.title} />
@@ -27,15 +36,7 @@ export default ({ product }: Props) => {
         title={product.title}
         subtitle={priceString(product.price)}
         actionIcon={
-          <IconButton
-            onClick={() => {
-              if (isInCart) {
-                dispatch(removeCartItem(product.id))
-              } else {
-                dispatch(addCartItem(product.id))
-              }
-            }}
-          >
+          <IconButton onClick={handleCartButton}>
             {isInCart ? (
               <RemoveShoppingCartIcon style={{ fill: 'white' }} />
             ) : (
